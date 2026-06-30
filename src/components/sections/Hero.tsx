@@ -9,76 +9,95 @@ import { getDictionary } from "@/lib/i18n";
 
 const t = getDictionary();
 
+// Duplicate partners for seamless loop
+const loopedPartners = [...partners, ...partners];
+
 export function Hero() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-primary-900 via-primary-800 to-primary-700">
-      <div
-        className="pointer-events-none absolute inset-0 opacity-10"
-        style={{
-          backgroundImage:
-            "radial-gradient(circle at 20% 20%, white 1px, transparent 1px)",
-          backgroundSize: "32px 32px",
-        }}
-        aria-hidden="true"
+    <section className="relative min-h-[90vh] overflow-hidden">
+      {/* Background photo */}
+      <Image
+        src="/images/group-students.jpeg"
+        alt="Étudiants de EMS-ZTF lors de la cérémonie d'ouverture de l'année académique"
+        fill
+        priority
+        sizes="100vw"
+        className="object-cover object-center"
       />
-      <Container className="relative grid grid-cols-1 items-center gap-12 py-20 lg:grid-cols-2 lg:py-28">
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          <p className="mb-4 inline-flex items-center rounded-full bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-gold-300">
-            {siteConfig.yearsOfExperience} Years Of Experience
-          </p>
-          <h1 className="font-display text-4xl font-extrabold leading-tight text-white sm:text-5xl lg:text-6xl">
+      {/* Dark gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-r from-primary-950/90 via-primary-950/70 to-primary-900/40" />
+
+      <Container className="relative flex min-h-[90vh] flex-col justify-center py-20">
+        <div className="max-w-2xl">
+          {/* Animated badge */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.7, y: 8 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 0.5, type: "spring", bounce: 0.4 }}
+            className="mb-6 inline-flex animate-bounce-in items-center gap-2 rounded-full border border-gold-500/40 bg-white/10 px-5 py-2 backdrop-blur-sm"
+          >
+            <span className="flex h-7 w-7 items-center justify-center rounded-full bg-gold-500 font-display text-xs font-bold text-ink-950">
+              {siteConfig.yearsOfExperience}
+            </span>
+            <span className="text-sm font-semibold text-gold-200">
+              ans d&apos;expérience dans la formation en santé
+            </span>
+          </motion.div>
+
+          {/* Headline */}
+          <motion.h1
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="font-display text-4xl font-extrabold leading-tight text-white sm:text-5xl lg:text-6xl"
+          >
             {siteConfig.tagline}
-          </h1>
-          <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/80">
+          </motion.h1>
+
+          {/* Sub-tagline */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="mt-6 max-w-xl text-lg leading-relaxed text-white/85"
+          >
             {siteConfig.subTagline}
-          </p>
-          <div className="mt-8 flex flex-wrap gap-4">
+          </motion.p>
+
+          {/* CTAs */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.35 }}
+            className="mt-8 flex flex-wrap gap-4"
+          >
             <Button href="/a-propos/" variant="gold" size="lg">
               {t.cta.learnMore}
             </Button>
             <Button href="/inscriptions/" variant="ghost" size="lg">
               {t.cta.joinNow}
             </Button>
-          </div>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6, delay: 0.15 }}
-          className="relative mx-auto aspect-[4/3] w-full max-w-lg overflow-hidden rounded-3xl border border-white/10 shadow-2xl"
-        >
-          <Image
-            src="/images/hero/students-campus.svg"
-            alt="Étudiants de EMS-ZTF en blouse lors d'une session pratique"
-            fill
-            priority
-            sizes="(min-width: 1024px) 32rem, 90vw"
-            className="object-cover"
-          />
-        </motion.div>
+          </motion.div>
+        </div>
       </Container>
 
-      <div className="relative border-t border-white/10 bg-primary-950/40 py-8 backdrop-blur-sm">
-        <Container>
-          <p className="mb-6 text-center text-xs font-semibold uppercase tracking-[0.3em] text-white/50">
-            Nos partenaires &amp; affiliations
-          </p>
-          <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-6">
-            {partners.map((partner) => (
+      {/* Partner marquee strip */}
+      <div className="absolute bottom-0 left-0 right-0 border-t border-white/10 bg-primary-950/70 py-5 backdrop-blur-sm">
+        <p className="mb-3 text-center text-[10px] font-semibold uppercase tracking-[0.3em] text-white/40">
+          Partenaires &amp; affiliations
+        </p>
+        <div className="overflow-hidden">
+          <div className="flex w-max animate-marquee items-center gap-12 whitespace-nowrap px-8">
+            {loopedPartners.map((partner, i) => (
               <span
-                key={partner.name}
-                className="text-sm font-semibold uppercase tracking-wide text-white/60 grayscale transition-all duration-200 hover:text-white hover:grayscale-0"
+                key={`${partner.name}-${i}`}
+                className="text-sm font-bold uppercase tracking-widest text-white/50 transition-colors hover:text-white/90"
               >
                 {partner.name}
               </span>
             ))}
           </div>
-        </Container>
+        </div>
       </div>
     </section>
   );

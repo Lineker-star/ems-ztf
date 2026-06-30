@@ -35,7 +35,15 @@ export const metadata: Metadata = {
     "kinésithérapie Cameroun",
     "sage-femme formation",
     "techniciens médico-sanitaires",
+    "formation paramédicale Bertoua",
+    "IU-ZTF",
   ],
+  icons: {
+    icon: [
+      { url: "/favicon.png", type: "image/png" },
+    ],
+    apple: "/favicon.png",
+  },
   openGraph: {
     type: "website",
     locale: "fr_FR",
@@ -43,12 +51,13 @@ export const metadata: Metadata = {
     siteName: siteConfig.name,
     title: `${siteConfig.name} | ${siteConfig.tagline}`,
     description: siteConfig.mission,
-    images: [{ url: "/images/og-default.svg", width: 1200, height: 630 }],
+    images: [{ url: "/images/Logo.png", width: 512, height: 512, alt: siteConfig.name }],
   },
   twitter: {
     card: "summary_large_image",
     title: `${siteConfig.name} | ${siteConfig.tagline}`,
     description: siteConfig.mission,
+    images: ["/images/Logo.png"],
   },
   alternates: {
     canonical: siteUrl,

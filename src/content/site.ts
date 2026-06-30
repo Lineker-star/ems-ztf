@@ -3,7 +3,7 @@
 export const siteConfig = {
   name: "École des Métiers de Santé ZTF",
   shortName: "EMS-ZTF",
-  domain: "www.ems-ztf.site",
+  domain: "ems-ztf.site",
   tagline: "La santé du futur se construit ici",
   subTagline:
     "Apprendre aujourd'hui, soigner demain. La science au service de la vie et du bien-être.",
@@ -13,11 +13,18 @@ export const siteConfig = {
   address: {
     line: "Koumé-Bonis, Bertoua, Cameroun",
     mapQuery: "Koumé, Bertoua, Cameroun",
+    lat: 4.5733,
+    lng: 13.6856,
   },
   phones: ["+237 694 743 680", "+237 690 355 329"],
+  whatsapp: "237694743680",
   emails: {
     general: "info@ztfuniversity.com",
     contactForm: "ems@ztfuniversity.com",
+  },
+  social: {
+    facebook: "#",
+    youtube: "#",
   },
 } as const;
 
@@ -38,45 +45,52 @@ export const navigation = [
 ] as const;
 
 export const partners = [
-  { name: "MINSANTE", logo: "/images/partners/minsante.svg" },
-  { name: "Hope Clinic", logo: "/images/partners/hope-clinic.svg" },
-  { name: "ZTF Excellence", logo: "/images/partners/ztf-excellence.svg" },
-  { name: "MINESUP", logo: "/images/partners/minesup.svg" },
-  { name: "MINEFOP", logo: "/images/partners/minefop.svg" },
-  { name: "IFP", logo: "/images/partners/ifp.svg" },
-  { name: "WC Libraries", logo: "/images/partners/wc-libraries.svg" },
+  { name: "MINSANTE", logo: "/images/MINESANTE.png" },
+  { name: "Hope Clinic", logo: "" },
+  { name: "ZTF Excellence", logo: "" },
+  { name: "MINESUP", logo: "" },
+  { name: "MINEFOP", logo: "" },
+  { name: "IFP", logo: "" },
+  { name: "WC Libraries", logo: "" },
 ] as const;
 
 export const whyChooseUs = {
   intro:
     "À EMS-ZTF, chaque parcours est pensé pour transformer la théorie en compétence et la compétence en vocation. Voici ce qui distingue notre approche pédagogique.",
+  image: "/images/medical-students.png",
   features: [
     {
+      icon: "stethoscope",
       title: "Orientée vers la pratique",
       description:
         "Des stages, travaux pratiques et mises en situation réelles dès les premiers semestres.",
     },
     {
+      icon: "graduation",
       title: "Enseignants qualifiés",
       description:
         "Un corps enseignant composé de médecins et professionnels de santé en exercice.",
     },
     {
+      icon: "building",
       title: "Infrastructures modernes",
       description:
         "Des salles de travaux pratiques et une bibliothèque équipées pour un apprentissage concret.",
     },
     {
+      icon: "person",
       title: "Encadrement personnalisé",
       description:
         "Un suivi académique individualisé qui valorise le potentiel de chaque étudiant.",
     },
     {
+      icon: "globe",
       title: "Vision ouverte sur le monde",
       description:
         "Une formation alignée sur les standards régionaux et internationaux de la santé.",
     },
     {
+      icon: "check",
       title: "Choix et avenir assuré",
       description:
         "Des filières recherchées qui mènent directement vers l'emploi et l'autonomie professionnelle.",
@@ -106,6 +120,7 @@ export const aboutStats = [
 
 export const aboutContent = {
   heading: "Pourquoi les étudiants nous choisissent pour acquérir le savoir !",
+  image: "/images/clinical-practice.jpeg",
   paragraphs: [
     "À EMS-ZTF, nous offrons un enseignement de qualité, un encadrement personnalisé et un environnement d'apprentissage moderne qui permettent à chaque étudiant de développer ses compétences et d'atteindre son plein potentiel.",
     "Parce que nous formons les professionnels de demain ! EMS-ZTF se distingue par la qualité de son enseignement, la proximité avec ses étudiants, la diversité de ses programmes et l'intégration des nouvelles technologies dans l'apprentissage. Nous offrons un cadre accueillant, des formations accessibles, et un suivi académique qui valorise le potentiel de chacun.",
@@ -136,14 +151,19 @@ export const aboutContent = {
 export type Program = {
   slug: string;
   name: string;
+  shortName: string;
   shortTagline: string;
   description: string;
   instructor: string;
   students: number;
   rating: number;
   image: string;
+  heroImage: string;
   duration: string;
+  durationDetail: string;
+  admissionConditions: string[];
   overview: string;
+  modules: string[];
   careerOutcomes: string[];
 };
 
@@ -151,79 +171,148 @@ export const programs: Program[] = [
   {
     slug: "infirmiers-principaux",
     name: "Infirmiers Principaux",
+    shortName: "IDE",
     shortTagline: "Professionnels des soins et de la santé",
     description:
       "Dispensent des soins infirmiers complets et coordonnent les activités de santé.",
     instructor: "Dr. KUATE",
     students: 50,
     rating: 4.5,
-    image: "/images/programs/infirmiers-principaux.svg",
+    image: "/images/medical-students.png",
+    heroImage: "/images/nursing-care.jpg",
     duration: "6 Semestres",
+    durationDetail: "6 semestres (3 ans)",
+    admissionConditions: [
+      "BAC série C, D, ou équivalent",
+      "Bonne santé physique et aptitude médicale",
+      "Dossier complet d'inscription",
+    ],
     overview:
-      "La filière Infirmiers Principaux forme des professionnels capables de dispenser des soins infirmiers complets, d'assurer le suivi des patients et de coordonner les activités de santé au sein d'une équipe pluridisciplinaire. La formation combine cours théoriques, travaux pratiques et stages cliniques en milieu hospitalier.",
+      "La filière Infirmiers Principaux forme des professionnels capables de dispenser des soins infirmiers complets, d'assurer le suivi des patients et de coordonner les activités de santé au sein d'une équipe pluridisciplinaire. La formation combine cours théoriques, travaux pratiques intensifs et stages cliniques en milieu hospitalier.",
+    modules: [
+      "Anatomie & Physiologie",
+      "Soins infirmiers fondamentaux",
+      "Pharmacologie clinique",
+      "Santé communautaire",
+      "Éthique & Déontologie médicale",
+      "Pathologies médicales et chirurgicales",
+    ],
     careerOutcomes: [
       "Infirmier(ère) en hôpital public ou privé",
       "Infirmier(ère) en centre de santé communautaire",
-      "Coordination des soins et gestion d'unité de santé",
+      "Responsable de soins et gestion d'unité",
+      "Coordinateur(trice) de santé communautaire",
       "Poursuite d'études vers des spécialisations infirmières",
     ],
   },
   {
     slug: "kinesitherapie",
     name: "Kinésithérapie",
+    shortName: "TPMSK",
     shortTagline: "Rééducation et bien-être physique",
     description:
       "Aide à restaurer les capacités motrices et à améliorer la qualité de vie des patients.",
     instructor: "Dr. PATOUTOU",
     students: 56,
     rating: 4.5,
-    image: "/images/programs/kinesitherapie.svg",
+    image: "/images/doctors-campus.jpg",
+    heroImage: "/images/doctors-campus.jpg",
     duration: "6 Semestres",
+    durationDetail: "6 semestres (3 ans)",
+    admissionConditions: [
+      "BAC série C, D, ou équivalent",
+      "Aptitude physique requise",
+      "Dossier complet d'inscription",
+    ],
     overview:
       "La filière Kinésithérapie prépare des professionnels spécialisés dans la rééducation fonctionnelle, le traitement des troubles musculo-squelettiques et l'accompagnement des patients vers une autonomie physique retrouvée, à travers une formation alliant anatomie, biomécanique et pratique clinique.",
+    modules: [
+      "Anatomie fonctionnelle",
+      "Biomécanique & Physiologie du mouvement",
+      "Techniques de rééducation",
+      "Électrothérapie",
+      "Kinésithérapie respiratoire",
+      "Kinésithérapie sportive",
+    ],
     careerOutcomes: [
-      "Kinésithérapeute en cabinet libéral ou en hôpital",
-      "Rééducation fonctionnelle et sportive",
-      "Accompagnement des patients en centre spécialisé",
-      "Collaboration avec des équipes médicales pluridisciplinaires",
+      "Kinésithérapeute en centre de rééducation",
+      "Kinésithérapeute en hôpital ou clinique",
+      "Thérapeute sportif",
+      "Cabinet libéral de kinésithérapie",
+      "Accompagnement des personnes âgées en établissement spécialisé",
     ],
   },
   {
     slug: "sages-femmes",
     name: "Sages-femmes",
+    shortName: "SFM",
     shortTagline: "Maternité et accouchement",
     description:
       "Accompagnent les femmes tout au long de la grossesse et l'accouchement.",
     instructor: "Dr. LUDOVIC",
     students: 35,
     rating: 4.5,
-    image: "/images/programs/sages-femmes.svg",
+    image: "/images/maternity-care.jpg",
+    heroImage: "/images/maternity-care.jpg",
     duration: "6 Semestres",
+    durationDetail: "6 semestres (3 ans)",
+    admissionConditions: [
+      "BAC série C, D, ou équivalent",
+      "Réservé aux candidates féminines",
+      "Bonne santé physique et aptitude médicale",
+      "Dossier complet d'inscription",
+    ],
     overview:
       "La filière Sages-femmes forme des professionnelles capables d'accompagner les femmes avant, pendant et après la grossesse, d'assurer le suivi de l'accouchement et les premiers soins du nouveau-né, dans le respect des standards de santé maternelle et infantile.",
+    modules: [
+      "Obstétrique & Gynécologie",
+      "Néonatologie",
+      "Soins prénataux et postnataux",
+      "Accouchement physiologique",
+      "Santé de la reproduction",
+      "Planification familiale",
+    ],
     careerOutcomes: [
       "Sage-femme en maternité hospitalière",
       "Suivi prénatal et postnatal en centre de santé",
-      "Accompagnement à l'accouchement",
+      "Conseillère en santé maternelle",
+      "Planification familiale",
       "Santé maternelle et infantile en milieu communautaire",
     ],
   },
   {
     slug: "techniciens-medico-sanitaires",
     name: "Techniciens Médico-Sanitaires",
+    shortName: "ATMSAM",
     shortTagline: "Experts des analyses et examens médicaux",
     description:
       "Assurent les analyses et examens médicaux nécessaires au diagnostic et au suivi.",
     instructor: "Pr. ADAMOU",
     students: 15,
     rating: 4.5,
-    image: "/images/programs/techniciens-medico-sanitaires.svg",
+    image: "/images/lab-students.jpg",
+    heroImage: "/images/lab-students.jpg",
     duration: "6 Semestres",
+    durationDetail: "6 semestres (3 ans)",
+    admissionConditions: [
+      "BAC série C, D, ou scientifique",
+      "Aptitude aux travaux de laboratoire",
+      "Dossier complet d'inscription",
+    ],
     overview:
       "La filière Techniciens Médico-Sanitaires forme des spécialistes des analyses de laboratoire et des examens médico-sanitaires, indispensables au diagnostic, au suivi thérapeutique et à la prévention au sein du système de santé.",
+    modules: [
+      "Biologie médicale",
+      "Hématologie & Immunologie",
+      "Bactériologie & Microbiologie",
+      "Parasitologie",
+      "Biochimie clinique",
+      "Techniques d'analyses médicales",
+    ],
     careerOutcomes: [
-      "Technicien(ne) de laboratoire d'analyses médicales",
-      "Agent médico-sanitaire en centre de santé",
+      "Technicien(ne) en laboratoire médical",
+      "Agent médico-sanitaire en hôpital public ou privé",
+      "Analyste en centre de diagnostic",
       "Appui au diagnostic clinique",
       "Postes en santé publique et prévention",
     ],
@@ -233,17 +322,53 @@ export const programs: Program[] = [
 export type StaffMember = {
   name: string;
   role: string;
+  bio: string;
   photo: string;
 };
 
 export const staff: StaffMember[] = [
-  { name: "Dr. KUATE", role: "Pédiatre", photo: "/images/staff/dr-kuate.svg" },
-  { name: "Dr. BEKOLO", role: "Médecin", photo: "/images/staff/dr-bekolo.svg" },
-  { name: "Dr. NGUESSA", role: "Médecin", photo: "/images/staff/dr-nguessa.svg" },
-  { name: "Dr. TCHAMBA", role: "Médecin", photo: "/images/staff/dr-tchamba.svg" },
-  { name: "Dr. PATOUTOU", role: "Responsable filière Kinésithérapie", photo: "/images/staff/dr-patoutou.svg" },
-  { name: "Dr. LUDOVIC", role: "Responsable filière Sages-femmes", photo: "/images/staff/dr-ludovic.svg" },
-  { name: "Pr. ADAMOU", role: "Responsable filière Techniciens Médico-Sanitaires", photo: "/images/staff/pr-adamou.svg" },
+  {
+    name: "Dr. KUATE",
+    role: "Pédiatre",
+    bio: "Responsable de la filière Infirmiers Principaux, spécialiste en pédiatrie clinique.",
+    photo: "/images/staff/dr-kuate.svg",
+  },
+  {
+    name: "Dr. BEKOLO",
+    role: "Médecin",
+    bio: "Médecin généraliste, intervenant en anatomie et physiologie médicale.",
+    photo: "/images/staff/dr-bekolo.svg",
+  },
+  {
+    name: "Dr. NGUESSA",
+    role: "Médecin",
+    bio: "Spécialiste en pathologies médicales et en santé communautaire.",
+    photo: "/images/staff/dr-nguessa.svg",
+  },
+  {
+    name: "Dr. TCHAMBA",
+    role: "Médecin",
+    bio: "Intervenant en pharmacologie clinique et en éthique médicale.",
+    photo: "/images/staff/dr-tchamba.svg",
+  },
+  {
+    name: "Dr. PATOUTOU",
+    role: "Responsable filière Kinésithérapie",
+    bio: "Kinésithérapeute spécialisé en rééducation fonctionnelle et biomécanique.",
+    photo: "/images/staff/dr-patoutou.svg",
+  },
+  {
+    name: "Dr. LUDOVIC",
+    role: "Responsable filière Sages-femmes",
+    bio: "Sage-femme principale, experte en obstétrique et santé maternelle.",
+    photo: "/images/staff/dr-ludovic.svg",
+  },
+  {
+    name: "Pr. ADAMOU",
+    role: "Responsable filière Techniciens Médico-Sanitaires",
+    bio: "Professeur en biologie médicale et techniques d'analyses en laboratoire.",
+    photo: "/images/staff/pr-adamou.svg",
+  },
 ];
 
 export const admissions = {
@@ -271,6 +396,7 @@ export const admissions = {
   documents: [
     {
       label: "FICHE D'IDENTIFICATION",
+      description: "Formulaire d'identification de l'étudiant",
       file: "/documents/fiche-identification.pdf",
     },
     {
@@ -285,7 +411,7 @@ export const contactContent = {
   heading: "Contactez-Nous",
   secondaryHeading: "N'hésitez pas à nous contacter !",
   body:
-    "Nous sommes un établissement de formation professionnelle dédié aux sciences de la santé. Elle a pour mission de former des professionnels compétents, éthiques et immédiatement opérationnels, capables de répondre aux besoins réels du système de santé.",
+    "Nous sommes un établissement de formation professionnelle dédié aux sciences de la santé. Notre mission est de former des professionnels compétents, éthiques et immédiatement opérationnels, capables de répondre aux besoins réels du système de santé.",
 } as const;
 
 export const footerContent = {
@@ -295,7 +421,7 @@ export const footerContent = {
     heading: "Soutien & Aide",
     links: [
       { label: "Aide en ligne", href: "/contact/" },
-      { label: "Espace étudiant", href: "/contact/" },
+      { label: "Espace étudiant", href: "/inscriptions/" },
       { label: "Espace enseignant", href: "/contact/" },
     ],
   },

@@ -22,39 +22,51 @@ export default function StaffPage() {
 
       <section className="py-16 sm:py-24">
         <Container>
-          <div className="mb-14 flex flex-col items-center gap-6 rounded-3xl bg-primary-950 p-8 text-center sm:flex-row sm:text-left">
-            <div className="relative aspect-square w-32 flex-shrink-0 overflow-hidden rounded-full border-4 border-gold-500/50">
-              <Image
-                src={rector.photo}
-                alt={`Portrait de ${rector.name}`}
-                fill
-                sizes="128px"
-                className="object-cover"
-              />
-            </div>
-            <div>
-              <p className="font-display text-xl font-bold text-white">{rector.name}</p>
-              <p className="text-sm text-gold-300">{rector.title}</p>
-              <p className="mt-2 text-sm leading-relaxed text-white/70">{rector.quote}</p>
+          {/* Rector feature block */}
+          <div className="mb-14 overflow-hidden rounded-3xl bg-primary-950">
+            <div className="flex flex-col items-center gap-6 p-8 text-center sm:flex-row sm:text-left">
+              <div className="relative h-28 w-28 flex-shrink-0 overflow-hidden rounded-full border-4 border-gold-500/60">
+                <Image
+                  src={rector.photo}
+                  alt={`Portrait de ${rector.name}`}
+                  fill
+                  sizes="112px"
+                  className="object-cover"
+                />
+              </div>
+              <div>
+                <p className="font-display text-xl font-bold text-white">{rector.name}</p>
+                <p className="text-sm text-gold-300">{rector.title}</p>
+                <p className="mt-3 max-w-2xl text-sm leading-relaxed text-white/75">
+                  &ldquo;{rector.quote}&rdquo;
+                </p>
+              </div>
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-4">
+          {/* Staff grid */}
+          <h2 className="mb-8 font-display text-2xl font-bold text-ink-900">Corps enseignant</h2>
+          <div className="grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-4">
             {staff.map((member) => (
-              <div key={member.name} className="text-center">
-                <div className="relative mx-auto aspect-square w-full max-w-[180px] overflow-hidden rounded-2xl bg-ink-100">
+              <div
+                key={member.name}
+                className="group rounded-2xl border border-ink-100 bg-white p-5 text-center shadow-sm transition-shadow duration-200 hover:shadow-lg"
+              >
+                <div className="relative mx-auto aspect-square w-full max-w-[160px] overflow-hidden rounded-xl bg-ink-100">
                   <Image
                     src={member.photo}
                     alt={`Portrait de ${member.name}, ${member.role}`}
                     fill
-                    sizes="180px"
+                    sizes="160px"
                     className="object-cover"
+                    loading="lazy"
                   />
                 </div>
                 <h3 className="mt-4 font-display text-base font-semibold text-ink-900">
                   {member.name}
                 </h3>
-                <p className="text-sm text-ink-500">{member.role}</p>
+                <p className="text-sm font-medium text-primary-700">{member.role}</p>
+                <p className="mt-2 text-xs leading-relaxed text-ink-500">{member.bio}</p>
               </div>
             ))}
           </div>

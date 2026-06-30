@@ -25,12 +25,15 @@ function readSlugs(): string[] {
     .map((file) => file.replace(/\.md$/, ""));
 }
 
-export function getAllPosts(): BlogPostMeta[] {
+export type BlogPostWithCount = BlogPostMeta & { wordCount: number };
+
+export function getAllPosts(): BlogPostWithCount[] {
   return readSlugs()
     .map((slug) => {
       const fileContents = fs.readFileSync(path.join(blogDir, `${slug}.md`), "utf8");
-      const { data } = matter(fileContents);
-      return data as BlogPostMeta;
+      const { data, content } = matter(fileContents);
+      const wordCount = content.trim().split(/\s+/).length;
+      return { ...(data as BlogPostMeta), wordCount };
     })
     .sort((a, b) => (a.date < b.date ? 1 : -1));
 }

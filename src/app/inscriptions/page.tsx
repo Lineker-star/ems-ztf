@@ -21,85 +21,121 @@ export default function AdmissionsPage() {
       />
 
       <section className="py-16 sm:py-24">
-        <Container className="grid grid-cols-1 gap-12 lg:grid-cols-3">
+        <Container className="grid grid-cols-1 gap-14 lg:grid-cols-3">
+          {/* Main content */}
           <div className="lg:col-span-2 space-y-12">
+
+            {/* School requirements */}
             <div>
-              <h2 className="font-display text-2xl font-bold text-ink-900">
+              <h2 className="inline-flex items-center gap-2 font-display text-2xl font-bold text-ink-900">
+                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary-100 text-sm font-bold text-primary-700">A</span>
                 Exigences spécifiques à l&apos;école
               </h2>
-              <ul className="mt-4 list-disc space-y-2 pl-5 text-ink-700">
+              <ul className="mt-5 space-y-2">
                 {admissions.schoolRequirements.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </div>
-
-            <div>
-              <h2 className="font-display text-2xl font-bold text-ink-900">Tenue scolaire</h2>
-              <ul className="mt-4 space-y-3">
-                {admissions.uniform.map((u) => (
-                  <li
-                    key={u.label}
-                    className="rounded-xl border border-ink-100 bg-ink-50 p-4 text-sm text-ink-700"
-                  >
-                    <span className="font-semibold text-ink-900">{u.label} :</span> {u.items}
+                  <li key={item} className="flex items-center gap-3 rounded-xl border border-ink-100 bg-ink-50 px-4 py-3 text-sm text-ink-800">
+                    <span className="h-2 w-2 rounded-full bg-primary-500 flex-shrink-0" />
+                    {item}
                   </li>
                 ))}
               </ul>
             </div>
 
+            {/* Uniform */}
             <div>
-              <h2 className="font-display text-2xl font-bold text-ink-900">
+              <h2 className="inline-flex items-center gap-2 font-display text-2xl font-bold text-ink-900">
+                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary-100 text-sm font-bold text-primary-700">B</span>
+                Tenue scolaire
+              </h2>
+              <div className="mt-5 space-y-3">
+                {admissions.uniform.map((u) => (
+                  <div key={u.label} className="rounded-xl border border-primary-100 bg-primary-50 p-4">
+                    <span className="text-xs font-bold uppercase tracking-wide text-primary-600">{u.label}</span>
+                    <p className="mt-1 text-sm text-ink-700">{u.items}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Dossier — official checklist */}
+            <div>
+              <h2 className="inline-flex items-center gap-2 font-display text-2xl font-bold text-ink-900">
+                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary-100 text-sm font-bold text-primary-700">C</span>
                 Composition du dossier d&apos;inscription
               </h2>
-              <ol className="mt-4 space-y-3">
+              <div className="mt-5 divide-y divide-ink-100 rounded-2xl border border-ink-200 bg-white overflow-hidden">
                 {admissions.dossier.map((item, i) => (
-                  <li key={item} className="flex gap-3 text-sm leading-relaxed text-ink-700">
-                    <span className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-primary-100 text-xs font-bold text-primary-700">
-                      {i + 1}
-                    </span>
-                    <span>{item}</span>
-                  </li>
+                  <div key={item} className="flex items-start gap-4 px-5 py-4">
+                    {/* Visual checkbox */}
+                    <div className="mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded border-2 border-ink-300 bg-white">
+                      <div className="h-2.5 w-2.5 rounded-sm bg-transparent" />
+                    </div>
+                    <div className="flex gap-3">
+                      <span className="flex-shrink-0 font-display text-sm font-bold text-primary-600">{i + 1}.</span>
+                      <p className="text-sm leading-relaxed text-ink-700">{item}</p>
+                    </div>
+                  </div>
                 ))}
-              </ol>
+              </div>
+              <p className="mt-3 text-xs text-ink-500">
+                * Déposez l&apos;ensemble de ces pièces dans une chemise cartonnée à votre nom.
+              </p>
             </div>
           </div>
 
+          {/* Sidebar */}
           <aside className="space-y-6">
-            <div className="rounded-2xl border border-ink-100 bg-white p-6 shadow-sm">
-              <h2 className="font-display text-lg font-bold text-ink-900">
-                Documents à télécharger
-              </h2>
-              <div className="mt-4 space-y-4">
+            {/* PDF Downloads */}
+            <div className="rounded-2xl border-2 border-primary-200 bg-white p-6 shadow-sm">
+              <div className="mb-5 flex items-center gap-2">
+                <svg viewBox="0 0 24 24" className="h-5 w-5 text-primary-700" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v12m0 0l-4-4m4 4l4-4M5 19h14" />
+                </svg>
+                <h2 className="font-display text-lg font-bold text-ink-900">Documents à télécharger</h2>
+              </div>
+
+              <div className="space-y-4">
                 {admissions.documents.map((doc) => (
                   <a
                     key={doc.label}
                     href={doc.file}
                     download
-                    className="flex items-start gap-3 rounded-xl border border-ink-100 p-4 transition-colors hover:border-primary-300 hover:bg-primary-50"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group flex flex-col gap-3 rounded-xl border-2 border-ink-100 p-4 transition-all hover:border-primary-400 hover:bg-primary-50"
                   >
-                    <span className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-gold-100 text-gold-700">
-                      <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v12m0 0l-4-4m4 4l4-4M5 19h14" />
+                    <div className="flex items-center gap-3">
+                      <span className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl bg-red-100 text-red-600">
+                        <svg viewBox="0 0 24 24" className="h-6 w-6" fill="currentColor" aria-hidden="true">
+                          <path d="M5.625 1.5c-1.036 0-1.875.84-1.875 1.875v17.25c0 1.035.84 1.875 1.875 1.875h12.75c1.035 0 1.875-.84 1.875-1.875V12.75A3.75 3.75 0 0016.5 9h-1.875a1.875 1.875 0 01-1.875-1.875V5.25A3.75 3.75 0 009 1.5H5.625z" />
+                          <path d="M12.971 1.816A5.23 5.23 0 0114.25 5.25v1.875c0 .207.168.375.375.375H16.5a5.23 5.23 0 013.434 1.279 9.768 9.768 0 00-6.963-6.963z" />
+                        </svg>
+                      </span>
+                      <div className="min-w-0">
+                        <p className="font-display text-sm font-bold text-ink-900 group-hover:text-primary-700">
+                          {doc.label}
+                        </p>
+                        {"description" in doc && doc.description && (
+                          <p className="mt-0.5 text-xs text-ink-500">{doc.description}</p>
+                        )}
+                      </div>
+                    </div>
+                    <span className="flex items-center justify-center gap-2 rounded-lg bg-primary-600 py-2.5 text-xs font-bold text-white transition-colors group-hover:bg-primary-700">
+                      <svg viewBox="0 0 20 20" className="h-4 w-4" fill="currentColor" aria-hidden="true">
+                        <path fillRule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clipRule="evenodd" />
                       </svg>
-                    </span>
-                    <span>
-                      <span className="block text-sm font-semibold text-ink-900">{doc.label}</span>
-                      {"description" in doc && doc.description && (
-                        <span className="mt-0.5 block text-xs text-ink-500">{doc.description}</span>
-                      )}
-                      <span className="mt-1 block text-xs font-medium text-primary-600">PDF</span>
+                      Télécharger le PDF
                     </span>
                   </a>
                 ))}
               </div>
             </div>
 
+            {/* Contact CTA */}
             <div className="rounded-2xl bg-primary-900 p-6 text-white">
-              <h3 className="font-display text-lg font-bold">Une question ?</h3>
+              <h3 className="font-display text-base font-bold">Une question ?</h3>
               <p className="mt-2 text-sm text-white/80">
-                Notre équipe admissions est disponible pour vous accompagner dans la constitution
-                de votre dossier.
+                Notre équipe admissions est disponible pour vous accompagner dans la constitution de votre dossier.
               </p>
               <Button href="/contact/" variant="gold" className="mt-4 w-full justify-center">
                 Nous contacter

@@ -55,13 +55,27 @@ const config: Config = {
       maxWidth: {
         "8xl": "90rem",
       },
+      scale: {
+        108: "1.08",
+      },
       animation: {
         marquee: "marquee 30s linear infinite",
+        "pulse-slow": "pulse-slow 3s ease-in-out infinite",
+        "bounce-in": "bounce-in 0.6s ease-out both",
       },
       keyframes: {
         marquee: {
           "0%": { transform: "translateX(0)" },
           "100%": { transform: "translateX(-50%)" },
+        },
+        "pulse-slow": {
+          "0%, 100%": { boxShadow: "0 0 0 0 rgba(31,126,135,0.4)" },
+          "50%": { boxShadow: "0 0 0 8px rgba(31,126,135,0)" },
+        },
+        "bounce-in": {
+          "0%": { transform: "scale(0.8) translateY(10px)", opacity: "0" },
+          "60%": { transform: "scale(1.05) translateY(-4px)", opacity: "1" },
+          "100%": { transform: "scale(1) translateY(0)", opacity: "1" },
         },
       },
     },
