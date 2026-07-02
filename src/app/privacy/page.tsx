@@ -15,8 +15,8 @@ export default function PrivacyPage() {
       <PageHero eyebrow="Légal" title="Politique de confidentialité" />
       <section className="py-16 sm:py-20">
         <Container className="max-w-3xl">
-          <div className="prose prose-ink max-w-none">
-            <p className="text-sm text-ink-500">Dernière mise à jour : janvier 2026</p>
+          <div className="prose prose-ink dark:prose-invert max-w-none">
+            <p className="text-sm text-ink-500 dark:text-ink-400">Dernière mise à jour : janvier 2026</p>
 
             <h2>1. Collecte des données</h2>
             <p>

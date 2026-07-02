@@ -19,10 +19,10 @@ export default function ContactPage() {
         <Container className="grid grid-cols-1 gap-12 lg:grid-cols-2">
           {/* Info */}
           <div>
-            <h2 className="font-display text-2xl font-bold text-ink-900">
+            <h2 className="font-display text-2xl font-bold text-ink-900 dark:text-white">
               {contactContent.secondaryHeading}
             </h2>
-            <p className="mt-4 text-base leading-relaxed text-ink-700">{contactContent.body}</p>
+            <p className="mt-4 text-base leading-relaxed text-ink-700 dark:text-ink-200">{contactContent.body}</p>
 
             <dl className="mt-8 space-y-5">
               {/* Location */}
@@ -33,8 +33,8 @@ export default function ContactPage() {
                     <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                   </svg>
                 </dt>
-                <dd className="text-sm text-ink-700">
-                  <span className="block font-semibold text-ink-900">Localisation</span>
+                <dd className="text-sm text-ink-700 dark:text-ink-200">
+                  <span className="block font-semibold text-ink-900 dark:text-white">Localisation</span>
                   {siteConfig.address.line}
                 </dd>
               </div>
@@ -46,8 +46,8 @@ export default function ContactPage() {
                     <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                   </svg>
                 </dt>
-                <dd className="text-sm text-ink-700">
-                  <span className="block font-semibold text-ink-900">E-mail</span>
+                <dd className="text-sm text-ink-700 dark:text-ink-200">
+                  <span className="block font-semibold text-ink-900 dark:text-white">E-mail</span>
                   <a href={`mailto:${siteConfig.emails.contactForm}`} className="hover:text-primary-700">
                     {siteConfig.emails.contactForm}
                   </a>
@@ -61,8 +61,8 @@ export default function ContactPage() {
                     <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                   </svg>
                 </dt>
-                <dd className="text-sm text-ink-700">
-                  <span className="block font-semibold text-ink-900">Téléphone</span>
+                <dd className="text-sm text-ink-700 dark:text-ink-200">
+                  <span className="block font-semibold text-ink-900 dark:text-white">Téléphone</span>
                   {siteConfig.phones.map((phone) => (
                     <a
                       key={phone}
@@ -88,24 +88,25 @@ export default function ContactPage() {
               </div>
             </dl>
 
-            {/* Map embed */}
-            <div className="mt-8 overflow-hidden rounded-2xl border border-ink-100 shadow-sm">
-              <iframe
-                title="Localisation de EMS-ZTF — Koumé-Bonis, Bertoua"
-                src={`https://www.google.com/maps?q=${siteConfig.address.lat},${siteConfig.address.lng}&z=14&output=embed`}
-                width="100%"
-                height="300"
-                style={{ border: 0, display: "block" }}
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                allowFullScreen
-              />
+            {/* Map embed — responsive 16:9 */}
+            <div className="mt-8 overflow-hidden rounded-2xl border border-ink-100 dark:border-ink-800 shadow-sm">
+              <div className="relative aspect-video w-full">
+                <iframe
+                  title="Localisation de EMS-ZTF — Koumé-Bonis, Bertoua"
+                  src={`https://www.google.com/maps?q=${siteConfig.address.lat},${siteConfig.address.lng}&z=14&output=embed`}
+                  className="absolute inset-0 h-full w-full"
+                  style={{ border: 0 }}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  allowFullScreen
+                />
+              </div>
             </div>
           </div>
 
           {/* Form */}
-          <div className="rounded-3xl border border-ink-100 bg-white p-6 shadow-sm sm:p-8">
-            <h3 className="mb-6 font-display text-xl font-bold text-ink-900">Envoyez-nous un message</h3>
+          <div className="rounded-3xl border border-ink-100 dark:border-ink-800 bg-white dark:bg-ink-900 p-6 shadow-sm sm:p-8">
+            <h3 className="mb-6 font-display text-xl font-bold text-ink-900 dark:text-white">Envoyez-nous un message</h3>
             <ContactForm />
           </div>
         </Container>

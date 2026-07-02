@@ -15,8 +15,8 @@ export default function ConditionsPage() {
       <PageHero eyebrow="Légal" title="Conditions d'utilisation" />
       <section className="py-16 sm:py-20">
         <Container className="max-w-3xl">
-          <div className="prose prose-ink max-w-none">
-            <p className="text-sm text-ink-500">Dernière mise à jour : janvier 2026</p>
+          <div className="prose prose-ink dark:prose-invert max-w-none">
+            <p className="text-sm text-ink-500 dark:text-ink-400">Dernière mise à jour : janvier 2026</p>
 
             <h2>1. Acceptation des conditions</h2>
             <p>

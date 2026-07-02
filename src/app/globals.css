@@ -2,13 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --glass-bg: rgba(255, 255, 255, 0.08);
+  --glass-border: rgba(255, 255, 255, 0.15);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  --primary: #0ea5e9;
+  --primary-dark: #0369a1;
+  --accent: #10b981;
+  --gold: #f59e0b;
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
   }
 
   body {
-    @apply bg-white text-ink-800 antialiased;
+    @apply bg-white text-ink-800 antialiased transition-colors duration-300 dark:bg-ink-950 dark:text-ink-100;
   }
 
   ::selection {
@@ -24,6 +34,73 @@
   .fade-in {
     animation: fade-in 0.6s ease-out both;
   }
+
+  /* Glassmorphism surface */
+  .glass {
+    @apply border border-white/15 bg-[rgba(255,255,255,0.08)] shadow-[0_8px_32px_rgba(0,0,0,0.12)] backdrop-blur-md dark:border-slate-700/50 dark:bg-slate-800/50;
+  }
+
+  /* 3D tilt hover for program-style cards */
+  .tilt-card {
+    transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    transform-style: preserve-3d;
+  }
+  .tilt-card:hover {
+    transform: perspective(1000px) rotateY(-5deg) rotateX(3deg) translateY(-8px);
+    box-shadow: 20px 20px 60px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Underline-on-hover nav links */
+  .nav-underline {
+    position: relative;
+  }
+  .nav-underline::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    height: 2px;
+    width: 100%;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.25s ease;
+  }
+  .nav-underline:hover::after {
+    transform: scaleX(1);
+  }
+
+  /* Focus glow for inputs */
+  .input-glow:focus {
+    box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.3);
+  }
+
+  /* Gradient marquee grayscale-to-color partners */
+  .partner-logo {
+    filter: grayscale(100%);
+    opacity: 0.6;
+    transition: filter 0.3s ease, opacity 0.3s ease;
+  }
+  .partner-logo:hover {
+    filter: grayscale(0%);
+    opacity: 1;
+  }
+
+  /* Animated gradient border, used on footer top edge */
+  .gradient-border-top {
+    position: relative;
+  }
+  .gradient-border-top::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--primary), var(--accent), var(--gold), var(--primary));
+    background-size: 200% 100%;
+    animation: gradient-shift 6s linear infinite;
+  }
 }
 
 @keyframes fade-in {
@@ -34,5 +111,14 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
   }
 }

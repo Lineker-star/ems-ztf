@@ -45,14 +45,14 @@ export default function StaffPage() {
           </div>
 
           {/* Staff grid */}
-          <h2 className="mb-8 font-display text-2xl font-bold text-ink-900">Corps enseignant</h2>
-          <div className="grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-4">
+          <h2 className="mb-8 font-display text-2xl font-bold text-ink-900 dark:text-white">Corps enseignant</h2>
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {staff.map((member) => (
               <div
                 key={member.name}
-                className="group rounded-2xl border border-ink-100 bg-white p-5 text-center shadow-sm transition-shadow duration-200 hover:shadow-lg"
+                className="group rounded-2xl border border-ink-100 dark:border-ink-800 bg-white dark:bg-ink-900 p-5 text-center shadow-sm transition-shadow duration-200 hover:shadow-lg"
               >
-                <div className="relative mx-auto aspect-square w-full max-w-[160px] overflow-hidden rounded-xl bg-ink-100">
+                <div className="relative mx-auto aspect-square w-full max-w-[160px] overflow-hidden rounded-xl bg-ink-100 dark:bg-ink-800">
                   <Image
                     src={member.photo}
                     alt={`Portrait de ${member.name}, ${member.role}`}
@@ -62,11 +62,11 @@ export default function StaffPage() {
                     loading="lazy"
                   />
                 </div>
-                <h3 className="mt-4 font-display text-base font-semibold text-ink-900">
+                <h3 className="mt-4 font-display text-base font-semibold text-ink-900 dark:text-white">
                   {member.name}
                 </h3>
                 <p className="text-sm font-medium text-primary-700">{member.role}</p>
-                <p className="mt-2 text-xs leading-relaxed text-ink-500">{member.bio}</p>
+                <p className="mt-2 text-xs leading-relaxed text-ink-500 dark:text-ink-400">{member.bio}</p>
               </div>
             ))}
           </div>

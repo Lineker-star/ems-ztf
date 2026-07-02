@@ -24,7 +24,7 @@ export function PageHero({
         <p className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-gold-300">
           {eyebrow}
         </p>
-        <h1 className="font-display text-3xl font-extrabold text-white sm:text-4xl lg:text-5xl">
+        <h1 className="text-[clamp(1.75rem,4vw,3rem)] font-display font-extrabold text-white">
           {title}
         </h1>
         {description && (

@@ -124,23 +124,23 @@ export default function ProgramDetailPage({ params }: { params: { slug: string }
             <div className="lg:col-span-2 space-y-12">
               {/* Overview */}
               <div>
-                <h2 className="font-display text-2xl font-bold text-ink-900">Vue d&apos;ensemble</h2>
-                <p className="mt-4 text-base leading-relaxed text-ink-700">{program.overview}</p>
+                <h2 className="font-display text-2xl font-bold text-ink-900 dark:text-white">Vue d&apos;ensemble</h2>
+                <p className="mt-4 text-base leading-relaxed text-ink-700 dark:text-ink-200">{program.overview}</p>
               </div>
 
               {/* Modules */}
               <div>
-                <h2 className="font-display text-2xl font-bold text-ink-900">Modules de formation</h2>
+                <h2 className="font-display text-2xl font-bold text-ink-900 dark:text-white">Modules de formation</h2>
                 <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
                   {program.modules.map((mod, i) => (
                     <div
                       key={mod}
-                      className="flex items-center gap-3 rounded-xl border border-ink-100 bg-ink-50 px-4 py-3"
+                      className="flex items-center gap-3 rounded-xl border border-ink-100 dark:border-ink-800 bg-ink-50 dark:bg-ink-900 px-4 py-3"
                     >
                       <span className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-primary-100 text-xs font-bold text-primary-700">
                         {String(i + 1).padStart(2, "0")}
                       </span>
-                      <span className="text-sm font-medium text-ink-800">{mod}</span>
+                      <span className="text-sm font-medium text-ink-800 dark:text-ink-200">{mod}</span>
                     </div>
                   ))}
                 </div>
@@ -150,11 +150,11 @@ export default function ProgramDetailPage({ params }: { params: { slug: string }
             {/* Sidebar */}
             <aside className="space-y-6">
               {/* Career outcomes */}
-              <div className="rounded-2xl border border-ink-100 bg-white p-6 shadow-sm">
-                <h3 className="font-display text-lg font-bold text-ink-900">Débouchés professionnels</h3>
+              <div className="rounded-2xl border border-ink-100 dark:border-ink-800 bg-white dark:bg-ink-900 p-6 shadow-sm">
+                <h3 className="font-display text-lg font-bold text-ink-900 dark:text-white">Débouchés professionnels</h3>
                 <ul className="mt-4 space-y-3">
                   {program.careerOutcomes.map((outcome) => (
-                    <li key={outcome} className="flex gap-2.5 text-sm text-ink-700">
+                    <li key={outcome} className="flex gap-2.5 text-sm text-ink-700 dark:text-ink-200">
                       <svg viewBox="0 0 20 20" className="mt-0.5 h-4 w-4 flex-shrink-0 text-primary-600" fill="currentColor">
                         <path fillRule="evenodd" d="M16.7 5.3a1 1 0 010 1.4l-7 7a1 1 0 01-1.4 0l-3-3a1 1 0 111.4-1.4L9 11.6l6.3-6.3a1 1 0 011.4 0z" clipRule="evenodd" />
                       </svg>
@@ -178,22 +178,22 @@ export default function ProgramDetailPage({ params }: { params: { slug: string }
       </section>
 
       {/* Related programs */}
-      <section className="bg-ink-50 py-14">
+      <section className="bg-ink-50 dark:bg-ink-900 py-14">
         <Container>
-          <h2 className="font-display text-xl font-bold text-ink-900">{t.common.relatedPrograms}</h2>
+          <h2 className="font-display text-xl font-bold text-ink-900 dark:text-white">{t.common.relatedPrograms}</h2>
           <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-3">
             {related.map((p) => (
               <a
                 key={p.slug}
                 href={`/programmes/${p.slug}/`}
-                className="group flex items-center gap-4 rounded-xl border border-ink-100 bg-white p-4 transition-shadow hover:shadow-md"
+                className="group flex items-center gap-4 rounded-xl border border-ink-100 dark:border-ink-800 bg-white dark:bg-ink-900 p-4 transition-shadow hover:shadow-md"
               >
                 <div className="relative h-14 w-14 flex-shrink-0 overflow-hidden rounded-lg">
                   <Image src={p.image} alt={p.name} fill sizes="56px" className="object-cover" />
                 </div>
                 <div>
-                  <h3 className="text-sm font-semibold text-ink-900 group-hover:text-primary-700">{p.name}</h3>
-                  <p className="mt-0.5 text-xs text-ink-500">{p.shortTagline}</p>
+                  <h3 className="text-sm font-semibold text-ink-900 dark:text-white group-hover:text-primary-700">{p.name}</h3>
+                  <p className="mt-0.5 text-xs text-ink-500 dark:text-ink-400">{p.shortTagline}</p>
                 </div>
               </a>
             ))}

@@ -1,6 +1,7 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
+  darkMode: "class",
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -62,6 +63,9 @@ const config: Config = {
         marquee: "marquee 30s linear infinite",
         "pulse-slow": "pulse-slow 3s ease-in-out infinite",
         "bounce-in": "bounce-in 0.6s ease-out both",
+        float: "float 5s ease-in-out infinite",
+        "float-delayed": "float 5s ease-in-out 1.5s infinite",
+        "ping-slow": "ping-slow 2.5s cubic-bezier(0, 0, 0.2, 1) infinite",
       },
       keyframes: {
         marquee: {
@@ -76,6 +80,13 @@ const config: Config = {
           "0%": { transform: "scale(0.8) translateY(10px)", opacity: "0" },
           "60%": { transform: "scale(1.05) translateY(-4px)", opacity: "1" },
           "100%": { transform: "scale(1) translateY(0)", opacity: "1" },
+        },
+        float: {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-10px)" },
+        },
+        "ping-slow": {
+          "75%, 100%": { transform: "scale(1.8)", opacity: "0" },
         },
       },
     },

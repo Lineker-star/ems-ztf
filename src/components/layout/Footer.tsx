@@ -1,14 +1,17 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Container } from "@/components/ui/Container";
+import { NewsletterSignup } from "@/components/layout/NewsletterSignup";
+import { BackToTopButton } from "@/components/layout/BackToTopButton";
 import { siteConfig, footerContent } from "@/content/site";
 
 export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-ink-950 text-ink-200">
-      <Container className="grid grid-cols-1 gap-10 py-16 sm:grid-cols-2 lg:grid-cols-4">
+    <footer className="gradient-border-top relative bg-ink-950 text-ink-200">
+      <BackToTopButton />
+      <Container className="grid grid-cols-1 gap-10 py-16 md:grid-cols-2 lg:grid-cols-4">
         {/* Brand */}
         <div>
           <Link href="/" className="flex items-center gap-2.5">
@@ -117,6 +120,14 @@ export function Footer() {
           </ul>
         </div>
       </Container>
+
+      <div className="border-t border-white/10">
+        <Container className="py-10">
+          <div className="max-w-md">
+            <NewsletterSignup />
+          </div>
+        </Container>
+      </div>
 
       <div className="border-t border-white/10">
         <Container className="flex flex-col items-center justify-between gap-3 py-6 text-xs text-ink-500 sm:flex-row">

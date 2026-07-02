@@ -42,7 +42,7 @@ export function BlogList({ posts }: { posts: (BlogPostMeta & { wordCount: number
               className={`flex-shrink-0 rounded-full px-4 py-1.5 text-sm font-semibold transition-colors ${
                 activeCategory === cat
                   ? "bg-primary-600 text-white"
-                  : "bg-ink-100 text-ink-600 hover:bg-ink-200"
+                  : "bg-ink-100 dark:bg-ink-800 text-ink-600 dark:text-ink-300 hover:bg-ink-200"
               }`}
             >
               {cat}
@@ -67,14 +67,14 @@ export function BlogList({ posts }: { posts: (BlogPostMeta & { wordCount: number
             placeholder="Rechercher..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="w-full rounded-full border border-ink-200 bg-white py-2 pl-9 pr-4 text-sm text-ink-800 placeholder:text-ink-400 focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-200"
+            className="w-full rounded-full border border-ink-200 dark:border-ink-700 bg-white dark:bg-ink-900 py-2 pl-9 pr-4 text-sm text-ink-800 dark:text-ink-200 placeholder:text-ink-400 focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-200"
           />
         </div>
       </div>
 
       {/* Results */}
       {filtered.length === 0 ? (
-        <p className="mt-14 text-center text-base text-ink-500">
+        <p className="mt-14 text-center text-base text-ink-500 dark:text-ink-400">
           Aucun article ne correspond à votre recherche.
         </p>
       ) : (
@@ -107,10 +107,10 @@ export function BlogList({ posts }: { posts: (BlogPostMeta & { wordCount: number
                     <span>·</span>
                     <span>{readTime(post.wordCount)}</span>
                   </div>
-                  <h2 className="mt-2 font-display text-lg font-semibold text-ink-900 group-hover:text-primary-700">
+                  <h2 className="mt-2 font-display text-lg font-semibold text-ink-900 dark:text-white group-hover:text-primary-700">
                     {post.title}
                   </h2>
-                  <p className="mt-2 text-sm leading-relaxed text-ink-600">{post.excerpt}</p>
+                  <p className="mt-2 text-sm leading-relaxed text-ink-600 dark:text-ink-300">{post.excerpt}</p>
                 </div>
               </Card>
             </Link>

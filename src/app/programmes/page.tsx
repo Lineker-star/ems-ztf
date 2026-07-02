@@ -45,17 +45,17 @@ export default function ProgramsPage() {
                     <span className="mb-2 inline-flex w-fit rounded-full bg-primary-50 px-3 py-1 text-xs font-semibold text-primary-700">
                       {program.duration}
                     </span>
-                    <h2 className="font-display text-xl font-semibold text-ink-900 group-hover:text-primary-700">
+                    <h2 className="font-display text-xl font-semibold text-ink-900 dark:text-white group-hover:text-primary-700">
                       {program.name}
                     </h2>
                     <p className="mt-1 text-sm font-medium text-gold-700">{program.shortTagline}</p>
-                    <p className="mt-3 flex-1 text-sm leading-relaxed text-ink-600">
+                    <p className="mt-3 flex-1 text-sm leading-relaxed text-ink-600 dark:text-ink-300">
                       {program.description}
                     </p>
-                    <div className="mt-4 flex items-center justify-between border-t border-ink-100 pt-4">
+                    <div className="mt-4 flex items-center justify-between border-t border-ink-100 dark:border-ink-800 pt-4">
                       <div>
-                        <p className="text-xs font-semibold text-ink-800">{program.instructor}</p>
-                        <p className="text-xs text-ink-500">
+                        <p className="text-xs font-semibold text-ink-800 dark:text-ink-200">{program.instructor}</p>
+                        <p className="text-xs text-ink-500 dark:text-ink-400">
                           {program.students} {t.common.students}
                         </p>
                       </div>

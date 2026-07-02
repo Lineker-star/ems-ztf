@@ -20,7 +20,7 @@ export default function AboutPage() {
         <Container className="grid grid-cols-1 items-center gap-14 lg:grid-cols-2">
           <div className="max-w-xl">
             {aboutContent.paragraphs.map((p, i) => (
-              <p key={i} className="mb-5 text-base leading-relaxed text-ink-700 last:mb-0">
+              <p key={i} className="mb-5 text-base leading-relaxed text-ink-700 dark:text-ink-200 last:mb-0">
                 {p}
               </p>
             ))}
@@ -57,7 +57,7 @@ export default function AboutPage() {
         <Container>
           <div className="mb-10 text-center">
             <p className="text-sm font-semibold uppercase tracking-widest text-gold-700">Nos étudiants</p>
-            <h2 className="mt-2 font-display text-3xl font-bold text-ink-900">La vie à EMS-ZTF</h2>
+            <h2 className="mt-2 font-display text-3xl font-bold text-ink-900 dark:text-white">La vie à EMS-ZTF</h2>
           </div>
           <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
             {[
@@ -82,9 +82,9 @@ export default function AboutPage() {
       </section>
 
       {/* Infrastructure */}
-      <section className="bg-ink-50 py-16 sm:py-24">
+      <section className="bg-ink-50 dark:bg-ink-900 py-16 sm:py-24">
         <Container>
-          <h2 className="font-display text-3xl font-bold text-ink-900 sm:text-4xl">
+          <h2 className="font-display text-3xl font-bold text-ink-900 dark:text-white sm:text-4xl">
             Explorez nos infrastructures
           </h2>
           <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-3">
@@ -93,10 +93,10 @@ export default function AboutPage() {
                 <span className="font-display text-4xl font-bold text-primary-300">
                   {item.number}
                 </span>
-                <h3 className="mt-3 font-display text-xl font-semibold text-ink-900">
+                <h3 className="mt-3 font-display text-xl font-semibold text-ink-900 dark:text-white">
                   {item.title}
                 </h3>
-                <p className="mt-2 text-sm leading-relaxed text-ink-600">
+                <p className="mt-2 text-sm leading-relaxed text-ink-600 dark:text-ink-300">
                   {item.description}
                 </p>
               </div>

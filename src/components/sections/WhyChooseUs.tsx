@@ -54,7 +54,7 @@ export function WhyChooseUs() {
               eyebrow="Pourquoi nous choisir"
               title="Pourquoi les étudiants nous choisissent"
             />
-            <p className="mt-5 text-base leading-relaxed text-ink-600">
+            <p className="mt-5 text-base leading-relaxed text-ink-600 dark:text-ink-300">
               {whyChooseUs.intro}
             </p>
 
@@ -72,10 +72,10 @@ export function WhyChooseUs() {
                     {svgIcons[feature.icon as IconName]}
                   </span>
                   <div>
-                    <h3 className="font-display text-base font-semibold text-ink-900">
+                    <h3 className="font-display text-base font-semibold text-ink-900 dark:text-white">
                       {feature.title}
                     </h3>
-                    <p className="mt-1 text-sm leading-relaxed text-ink-600">
+                    <p className="mt-1 text-sm leading-relaxed text-ink-600 dark:text-ink-300">
                       {feature.description}
                     </p>
                   </div>

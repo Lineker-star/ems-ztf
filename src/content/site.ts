@@ -156,6 +156,7 @@ export type Program = {
   description: string;
   instructor: string;
   students: number;
+  capacity: number;
   rating: number;
   image: string;
   heroImage: string;
@@ -177,6 +178,7 @@ export const programs: Program[] = [
       "Dispensent des soins infirmiers complets et coordonnent les activités de santé.",
     instructor: "Dr. KUATE",
     students: 50,
+    capacity: 80,
     rating: 4.5,
     image: "/images/medical-students.png",
     heroImage: "/images/nursing-care.jpg",
@@ -214,6 +216,7 @@ export const programs: Program[] = [
       "Aide à restaurer les capacités motrices et à améliorer la qualité de vie des patients.",
     instructor: "Dr. PATOUTOU",
     students: 56,
+    capacity: 70,
     rating: 4.5,
     image: "/images/doctors-campus.jpg",
     heroImage: "/images/doctors-campus.jpg",
@@ -251,6 +254,7 @@ export const programs: Program[] = [
       "Accompagnent les femmes tout au long de la grossesse et l'accouchement.",
     instructor: "Dr. LUDOVIC",
     students: 35,
+    capacity: 50,
     rating: 4.5,
     image: "/images/maternity-care.jpg",
     heroImage: "/images/maternity-care.jpg",
@@ -289,6 +293,7 @@ export const programs: Program[] = [
       "Assurent les analyses et examens médicaux nécessaires au diagnostic et au suivi.",
     instructor: "Pr. ADAMOU",
     students: 15,
+    capacity: 30,
     rating: 4.5,
     image: "/images/lab-students.jpg",
     heroImage: "/images/lab-students.jpg",
@@ -398,11 +403,13 @@ export const admissions = {
       label: "FICHE D'IDENTIFICATION",
       description: "Formulaire d'identification de l'étudiant",
       file: "/documents/fiche-identification.pdf",
+      size: "200 Ko",
     },
     {
       label: "FICHE D'ENGAGEMENT",
       description: "Engagement de paiement des frais de scolarité",
       file: "/documents/fiche-engagement.pdf",
+      size: "149 Ko",
     },
   ],
 } as const;

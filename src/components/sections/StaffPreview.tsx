@@ -20,7 +20,7 @@ export function StaffPreview() {
           className="mx-auto"
         />
 
-        <div className="mt-14 grid grid-cols-2 gap-6 sm:grid-cols-4">
+        <div className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {featuredStaff.map((member, i) => (
             <motion.div
               key={member.name}
@@ -30,7 +30,7 @@ export function StaffPreview() {
               transition={{ duration: 0.5, delay: i * 0.08 }}
               className="text-center"
             >
-              <div className="relative mx-auto aspect-square w-full max-w-[180px] overflow-hidden rounded-2xl bg-ink-100">
+              <div className="relative mx-auto aspect-square w-full max-w-[180px] overflow-hidden rounded-2xl bg-ink-100 dark:bg-ink-800">
                 <Image
                   src={member.photo}
                   alt={`Portrait de ${member.name}, ${member.role}`}
@@ -39,10 +39,10 @@ export function StaffPreview() {
                   className="object-cover"
                 />
               </div>
-              <h3 className="mt-4 font-display text-base font-semibold text-ink-900">
+              <h3 className="mt-4 font-display text-base font-semibold text-ink-900 dark:text-white">
                 {member.name}
               </h3>
-              <p className="text-sm text-ink-500">{member.role}</p>
+              <p className="text-sm text-ink-500 dark:text-ink-400">{member.role}</p>
               <div className="mt-2 flex justify-center gap-3 text-ink-400">
                 <span aria-hidden="true" className="h-4 w-4 rounded-full border border-current" />
                 <span aria-hidden="true" className="h-4 w-4 rounded-full border border-current" />

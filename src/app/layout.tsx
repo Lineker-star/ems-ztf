@@ -4,6 +4,8 @@ import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { OrganizationJsonLd } from "@/components/JsonLd";
+import { Providers } from "@/components/Providers";
+import { PageTransition } from "@/components/PageTransition";
 import { siteConfig } from "@/content/site";
 
 const inter = Inter({
@@ -70,8 +72,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr" className={`${inter.variable} ${poppins.variable}`}>
-      <body className="flex min-h-screen flex-col font-sans">
+    <html lang="fr" className={`${inter.variable} ${poppins.variable}`} suppressHydrationWarning>
+      <head>
+        <link rel="preload" as="image" href="/images/medical-students-hero.png" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{var t=localStorage.getItem('theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme: dark)').matches)){document.documentElement.classList.add('dark');}}catch(e){}`,
+          }}
+        />
+      </head>
+      <body className="flex min-h-screen flex-col font-sans" suppressHydrationWarning>
         <OrganizationJsonLd />
         <a
           href="#main-content"
@@ -79,11 +89,13 @@ export default function RootLayout({
         >
           Aller au contenu principal
         </a>
-        <Header />
-        <main id="main-content" className="flex-1">
-          {children}
-        </main>
-        <Footer />
+        <Providers>
+          <Header />
+          <main id="main-content" className="flex-1">
+            <PageTransition>{children}</PageTransition>
+          </main>
+          <Footer />
+        </Providers>
       </body>
     </html>
   );
